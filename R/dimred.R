@@ -1,8 +1,11 @@
 # computes a PCA on X and returns X with
-# the first 'pcs' principal components added
+# the first 'pcs' principal components added.
+# X must be a data.frame
+#' @export
 pacode.pca <- function(X, pcs = ncol(X)) {
-  res <- prcomp(X, scale=T, center=T)
+  x <- X[,sapply(X,is.numeric)]
+  res <- prcomp(x, scale=T, center=T)
   df <- data.frame(res$x[, paste("PC", 1:pcs, sep="")])
   colnames(df) <- paste("PC", 1:pcs, sep="")
-  cbind(X, df)
+  df
 }
