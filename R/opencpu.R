@@ -1,7 +1,4 @@
-library(opencpu)
-
 pacode.startServer <- function() {
-  require(opencpu)
-  opencpu$stop()
-  opencpu$start(5307)
+  opencpu::opencpu$stop()
+  opencpu::opencpu$start(5307)
 }
