@@ -1,6 +1,3 @@
-library(graph)
-library(PairViz)
-
 # Returns a vector of indexes
 #' @export
 axis.order <- function(x, by = "random") {
@@ -16,16 +13,16 @@ axis.order <- function(x, by = "random") {
     numeric <- sapply(x, is.numeric)
     ret <- ret[order(numeric)]
   } else if (by == "correlation") {
-    permutation <- hamiltonian(as.dist(cor(x)))
+    permutation <- PairViz::hamiltonian(as.dist(cor(x)))
     ret <- ret[permutation]
   } else if (by == "euclidean") {
-    permutation <- hamiltonian(dist(t(x)))
+    permutation <- PairViz::hamiltonian(dist(t(x)))
     ret <- ret[permutation]
   } else if (by == "all") {
-    permutation <- hpaths(n, F)
+    permutation <- PairViz::hpaths(n, F)
     ret <- ret[permutation]
   } else if (by == "matrix") {
-    permutation <- zigzag(n)
+    permutation <- PairViz::zigzag(n)
     ret <- t(apply(permutation, 1, function(p) {ret[p]}))
   }
   ret
