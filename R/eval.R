@@ -47,8 +47,8 @@ funs <- lapply(packages, function(p) {
 #   safe_env[[f]] <- get(f, "package:utils")
 # }
 
-data("darkProteins")
-safe_env[["darkProteins"]] <- darkProteins
+#data("darkProteins")
+#safe_env[["darkProteins"]] <- darkProteins
 
 #' @export
 .val <- datasets::mtcars
